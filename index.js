@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('#register_modal').hide("explode");
     $('#login_modal').show("explode");
   });
-  $('#cnf_pwd').focusout(function (event){debugger
+  $('#cnf_pwd').focusout(function (event){
      var password = $('#pwd').val();
      var confirmPassword = $('#cnf_pwd').val();
      if(password != confirmPassword){
@@ -33,19 +33,25 @@ $(document).ready(function () {
     event.preventDefault();
     var $form = $(this),
       url = $form.attr('action');
-    var posting = $.post(url, { email: $('#login_email').val(), password: $('#login_pwd').val() });
-    posting.done(function (data) {
-      alert('Logged In Successfully');
-      location.href = 'welcome.html';
+    var posting = $.post(url, { email: $('#login_email').val(), password: $('#login_pwd').val() }, function (data) {
+    console.log("logged in successfully");
     });
   });
   $("update_form").submit(function (event) {
     event.preventDefault();
     var $form = $(this),
       url = $form.attr('action');
-    var posting = $.post(url, { age: $('#age').val(), dob: $('#dob').val(), contact_no: $('#contact').val()});
-    posting.done(function (data) {
-      window.localStorage.setItem("swaroop", "living");
+    var posting = $.post(url, { age: $('#age').val(), dob: $('#dob').val(), contact_no: $('#contact').val() }, function (data) {
+    console.log("updated successfully");
     });
   });
+  $("#logout").click(function (event) {
+    event.preventDefault();
+    var url = '/login.php';
+    var posting = $.post(url, {purpose: 'logout'},function (data) {
+    console.log("logged out");
+    window.location.href = "/index.html";
+    });
+  });
+  
 });
