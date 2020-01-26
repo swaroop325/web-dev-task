@@ -1,0 +1,38 @@
+$margin: 10%;
+$center_position: 2% auto;
+body{
+    background-image: url('images/background.svg'); 
+    background-size: cover;
+}
+.modal-header{
+    border-radius: 80%;
+}
+#register_modal{
+    display: none;
+}
+.modal-content{
+    margin: $margin;
+    opacity: 95%;
+}
+.title-img{
+    display: block;
+    margin: $center_position;
+}
+.modal-body{
+    height: inherit;
+}
+.modal-footer{
+    margin: $margin;
+}
+.footer-content{
+    text-align: center;
+    border-radius: 80%;
+}
+.btn-default{
+    display: block !important;
+    margin: $center_position;
+}
+.container{
+    margin-top: 5%;
+    width: inherit !important;
+}
