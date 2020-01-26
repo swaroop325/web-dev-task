@@ -1,1 +1,50 @@
-[{"name":"Swaroop A S","password":"962012d09b8170d912f0669f6d7d9d07","email":"swaroop@gmail.com","age":"21","dob":"2020-01-01","contact_no":"7401235572"}]
+[
+    {
+        "name": "Swaroop A S",
+        "password": "962012d09b8170d912f0669f6d7d9d07",
+        "email": "swaroop@gmail.com",
+        "age": "30",
+        "dob": "2020-01-01",
+        "contact_no": "9988775566"
+    },
+    {
+        "name": "web-guvi",
+        "password": "fcea920f7412b5da7be0cf42b8c93759",
+        "email": "swaroop12345@gmail.com",
+        "age": "21",
+        "dob": "2020-01-01",
+        "contact_no": "9940596779"
+    },
+    {
+        "name": "scad",
+        "password": "17d1637837e96d51cb02ac4394aa4b52",
+        "email": "scadapps@gmail.com",
+        "age": "22",
+        "dob": "1997-10-05",
+        "contact_no": "9940596779"
+    },
+    {
+        "name": "Swaroop A S",
+        "password": "827ccb0eea8a706c4c34a16891f84e7b",
+        "email": "swaroop@gmail.com",
+        "age": "21",
+        "dob": "2020-01-01",
+        "contact_no": "9940596779"
+    },
+    {
+        "name": "Swaroop anand",
+        "password": "827ccb0eea8a706c4c34a16891f84e7b",
+        "email": "swaroop123@gmail.com",
+        "age": "0",
+        "dob": "2021-01-01",
+        "contact_no": "7401235572"
+    },
+    {
+        "name": "344",
+        "password": "827ccb0eea8a706c4c34a16891f84e7b",
+        "email": "swaroop@gmail.com",
+        "age": "21",
+        "dob": "2020-01-01",
+        "contact_no": "21323232323"
+    }
+]

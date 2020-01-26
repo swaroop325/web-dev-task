@@ -1,11 +1,12 @@
 $margin: 10%;
+$border_radius: 80%;
 $center_position: 2% auto;
 body{
     background-image: url('images/background.svg'); 
     background-size: cover;
 }
 .modal-header{
-    border-radius: 80%;
+    border-radius: $border_radius;
 }
 #register_modal{
     display: none;
@@ -35,4 +36,7 @@ body{
 .container{
     margin-top: 5%;
     width: inherit !important;
+}
+h3{
+    text-align: center;
 }

@@ -7,51 +7,96 @@ $(document).ready(function () {
     $('#register_modal').hide("explode");
     $('#login_modal').show("explode");
   });
-  $('#cnf_pwd').focusout(function (event){
-     var password = $('#pwd').val();
-     var confirmPassword = $('#cnf_pwd').val();
-     if(password != confirmPassword){
-       alert("Confirm password does not match with password entered. Please Re-enter your password");
-       $('#cnf_pwd').val("");
+  $('#cnf_pwd').focusout(function (event) {
+    var password = $('#pwd').val();
+    var confirmPassword = $('#cnf_pwd').val();
+    if (password != confirmPassword) {
+      alert("Confirm password does not match with password entered. Please Re-enter your password");
+      $('#cnf_pwd').val("");
+    }
+  });
+  $("#registration_btn").click(function (event) {
+    event.preventDefault();
+    $.ajax({
+      url: "/guvi.php",
+      type: "POST",
+      data: {
+        purpose: 'register',
+        name: $('#name').val(),
+        password: $('#pwd').val(),
+        email: $('#email').val(),
+        age: $('#age').val(),
+        dob: $('#dob').val(),
+        contact_no: $('#contact').val()
+      },
+      success: function (data, textStatus, jqXHR) {
+        alert('Registered Successfully');
+        $('#register_modal').hide("explode");
+        $('#login_modal').show("explode");
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
       }
+    });
   });
-  $("#registration").submit(function (event) {
+  $("#login").click(function (event) {
     event.preventDefault();
-    var $form = $(this),
-      url = $form.attr('action');
-    var posting = $.post(url, {
-      name: $('#name').val(), password: $('#pwd').val(), email: $('#email').val(),
-      age: $('#age').val(), dob: $('#dob').val(), contact_no: $('#contact').val()
-    });
-    posting.done(function (data) {
-      alert('Registered Successfully');
-      $('#register_modal').hide("explode");
-      $('#login_modal').show("explode");
+    $.ajax({
+      url: "/guvi.php",
+      type: "POST",
+      data: {
+        purpose: 'login',
+        email: $('#login_email').val(),
+        password: $('#login_pwd').val()
+      },
+      success: function (data, textStatus, jqXHR) {
+        if (data != "false") {
+          alert("Log in successfull!");
+          console.log("logged in successfully");
+          window.location.href = "/welcome.html";
+        } else {
+          console.log("failed to log in");
+          alert("Incorrect Username or Password");
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      }
     });
   });
-  $("login").submit(function (event) {
+  $("#update_btn").click(function (event) {
     event.preventDefault();
-    var $form = $(this),
-      url = $form.attr('action');
-    var posting = $.post(url, { email: $('#login_email').val(), password: $('#login_pwd').val() }, function (data) {
-    console.log("logged in successfully");
+    $.ajax({
+      url: "/guvi.php",
+      type: "POST",
+      data: {
+        purpose: 'update',
+        age: $('#age').val(),
+        dob: $('#dob').val(),
+        contact_no: $('#contact').val()
+      },
+      success: function (data, textStatus, jqXHR) {
+        alert("Details updated successfully");
+        console.log("updated successfully");
+        window.location.href = "/welcome.html";
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      }
     });
   });
-  $("update_form").submit(function (event) {
+  $("#logout_btn").click(function (event) {
     event.preventDefault();
-    var $form = $(this),
-      url = $form.attr('action');
-    var posting = $.post(url, { age: $('#age').val(), dob: $('#dob').val(), contact_no: $('#contact').val() }, function (data) {
-    console.log("updated successfully");
+    $.ajax({
+      url: "/guvi.php",
+      type: "POST",
+      data: {
+        purpose: 'logout'
+      },
+      success: function (data, textStatus, jqXHR) {
+        alert("Your are now logged out");
+        console.log("user logged out");
+        window.location.href = "/index.html";
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+      }
     });
   });
-  $("#logout").click(function (event) {
-    event.preventDefault();
-    var url = '/login.php';
-    var posting = $.post(url, {purpose: 'logout'},function (data) {
-    console.log("logged out");
-    window.location.href = "/index.html";
-    });
-  });
-  
 });
